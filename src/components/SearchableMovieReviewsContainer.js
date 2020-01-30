@@ -4,7 +4,7 @@ import MovieReviews from './MovieReviews'
 
 const NYT_API_KEY = 'dGpQ5OmGP2SgfvZimlpCUoF4iOag9qzZ';
 const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'
-            + `api-key=${NYT_API_KEY}`;
+            + `api-key=${NYT_API_KEY}&query=`;
 
 // Code SearchableMovieReviewsContainer Here
 class SearchableMovieReviewsContainer extends Component {
@@ -19,7 +19,7 @@ class SearchableMovieReviewsContainer extends Component {
     }
 
     fetchMovieReviews = () => {
-        fetch(URL + `&query=${this.state.searchTerm}`)
+        fetch(URL + `${this.state.searchTerm}`)
         .then(res => res.json())
         .then(data => {
             this.setState({
@@ -34,7 +34,7 @@ class SearchableMovieReviewsContainer extends Component {
         })
     }
 
-    handleSunmit = event => {
+    handleSubmit = event => {
         event.preventDefault()
         this.fetchMovieReviews()
     }
