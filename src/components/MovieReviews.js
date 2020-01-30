@@ -11,6 +11,8 @@ const MovieReviews = props => {
                     ({review.mpaa_rating}) 
                     - {review.byline} 
                     - {review.headline} 
+                    - {review.summary_short}
+                    - {review.link}
                     ({review.critics_pick})
                     - {review.publication_date}
                 </li>
