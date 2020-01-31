@@ -1,16 +1,13 @@
 import React from 'react';
-import Review from './Review';
 
-const MovieReviews = ({ reviews }) => (
-  <div className="review-list">
-    {reviews.map((review, index) => <Review 
-      title={review.headline} 
-      url={review.link.url} 
-      key={review.headline+index}
-      summary={review.summary_short}
-      />) }
-  </div>
-)
+const Review = ({ headline, summary_short, link }) => (
+    <div className="review" key={headline}>
+      <a href={link.url}><h3>{headline}</h3></a>
+      <p>{summary_short}</p>
+    </div>
+);
+
+const MovieReviews = ({ reviews }) => <div className="review-list">{reviews.map(Review)}</div>;
 
 MovieReviews.defaultProps = {
   reviews: []
