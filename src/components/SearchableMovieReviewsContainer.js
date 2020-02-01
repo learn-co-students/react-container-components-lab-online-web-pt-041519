@@ -17,12 +17,48 @@ class SearchableMovieReviewsContainer extends Component {
         }
     }
 
+    handleChange = event => {
+        this.setState({
+            searchTerm: event.target.value
+          })
+        }
 
+    handleSearch = event => {
+        event.preventDefault()
+
+        // if (input !== "") {
+        fetch(URL + `&query=${this.state.searchTerm}`)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({ 
+                reviews: data.results
+            })
+        })        
+        // }
+    }  
+
+    fetchData = (input) => {
+
+    }
 
     render() {
         return (
             <div className="searchable-movie-reviews">
-                <MovieReviews />
+                <form onSubmit={this.handleSearch}>
+                    <label>
+                    Search
+                    <input
+                        id="search"
+                        name="searchKey"
+                        type="text"
+                        value={this.searchTerm}
+                        onChange={this.handleChange}
+                    />
+                    </label>
+                    <button type="submit">Submit</button>  
+                </form>
+
+                <MovieReviews reviews={this.state.reviews} />
             </div>
         )
     }
