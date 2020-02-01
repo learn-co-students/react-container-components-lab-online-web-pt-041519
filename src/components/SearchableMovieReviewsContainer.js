@@ -37,10 +37,6 @@ class SearchableMovieReviewsContainer extends Component {
         // }
     }  
 
-    fetchData = (input) => {
-
-    }
-
     render() {
         return (
             <div className="searchable-movie-reviews">
