@@ -24,9 +24,9 @@ class LatestMovieReviewsContainer extends React.Component {
 	      })
 	}
 
-	renderMovies = () => (
-			<MovieReviews movies={this.state.reviews} />
-		)
+	renderMovies = () => {
+			return <MovieReviews movies={this.state.reviews} />
+		}
 
 
 

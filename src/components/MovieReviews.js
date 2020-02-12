@@ -2,31 +2,30 @@ import React from 'react'
 
 const MovieReviews = (props) => {
 
+
 	const handleRenderMovies = (props) => {
-		debugger
-		props.map(movie => {
-			<div className="review">
-				<p>
-					Movie Title: {movie.title}<br/>
-					Director: {movie.director}<br/>
-					Opening Date: {movie.opening_date}<br/>
-					Review: {movie.review}
-				</p>
-			</div>
-		})
+
+		if (props.movies.length != 0 ) {
+			return props.movies.map(movie => {
+				// console.log(movie)
+				return <div className="review">
+					<p>
+						Movie Title: {movie.display_title}<br/>
+						Director: {movie.byline}<br/>
+						Opening Date: {movie.opening_date}<br/>
+						Review: {movie.summary_short}
+					</p>
+				</div>
+			})			
+		}
+
 	}
 
-	return(
+	return (
 		<div className="review-list">
-			<div className="review">
-				{handleRenderMovies()}
-			</div>
+				{handleRenderMovies(props)}
 		</div>
 	)
-}
-
-MovieReviews.defaultProps = {
-	reviews: []
 }
 
 export default MovieReviews
