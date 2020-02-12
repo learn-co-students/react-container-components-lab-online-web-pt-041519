@@ -12,11 +12,7 @@ class LatestMovieReviewsContainer extends React.Component {
     super();
 
     this.state = {
-      time: undefined,
-      pancakes: [],
-      cooked: 0,
-      burnt: 0,
-      raw: 0
+      reviews: []
     };
   }
 
@@ -24,18 +20,21 @@ class LatestMovieReviewsContainer extends React.Component {
 		fetch(URL)
 	      .then(response => response.json())
 	      .then(data => {
-	      	debugger
-	      	let gif_url_array = []
-	      	for(let i = 0; i<=2; i++) {
-	      		gif_url_array.push(data.data[i].images.original.url)
-	      	}
-	      	this.setState({gifs: gif_url_array})
+	      	this.setState({reviews: data.results})
 	      })
 	}
 
+	renderMovies = () => (
+			<MovieReviews movies={this.state.reviews} />
+		)
+
+
+
 	render() {
 		return (
-			<div></div>
+			<div className="latest-movie-reviews">
+					{this.renderMovies()}
+			</div>
 			)
 	}
 
