@@ -25,7 +25,9 @@ class LatestMovieReviewsContainer extends React.Component {
 	}
 
 	renderMovies = () => {
-			return <MovieReviews movies={this.state.reviews} />
+			if (this.state.reviews.length > 0) {
+				return <MovieReviews movies={this.state.reviews} />
+			}
 		}
 
 

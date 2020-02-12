@@ -38,9 +38,11 @@ class SearchableMovieReviewsContainer extends React.Component {
 		this.setState({reviews: data.results})
 	}
 
-	renderMovies = () => (
-			<MovieReviews movies={this.state.reviews} />
-		)
+	renderMovies = () => {
+			if (this.state.reviews.length > 0) {
+				return <MovieReviews movies={this.state.reviews} />
+			}
+		}
 
 
 	render() {

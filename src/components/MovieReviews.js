@@ -5,7 +5,7 @@ const MovieReviews = (props) => {
 
 	const handleRenderMovies = (props) => {
 
-		if (props.movies.length != 0 ) {
+		if (props.movies.length > 0 ) {
 			return props.movies.map(movie => {
 				// console.log(movie)
 				return <div className="review">
